@@ -1,4 +1,4 @@
-FROM gameservermanagers/linuxgsm:ubuntu-22.04
+FROM gameservermanagers/linuxgsm:latest
 LABEL maintainer="LinuxGSM <me@danielgibbs.co.uk>"
 ARG SHORTNAME=ets2
 ENV GAMESERVER=ets2server
