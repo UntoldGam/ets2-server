@@ -1,4 +1,4 @@
-FROM gameservermanagers/linuxgsm
+FROM --platform=arm64 gameservermanagers/linuxgsm
 LABEL maintainer="LinuxGSM <me@danielgibbs.co.uk>"
 ARG SHORTNAME=ets2
 ENV GAMESERVER=ets2server
