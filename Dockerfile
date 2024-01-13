@@ -3,7 +3,7 @@ LABEL maintainer="LinuxGSM <me@danielgibbs.co.uk>"
 ARG SHORTNAME=ets2
 ENV GAMESERVER=ets2server
 
-COPY /config_files ~/data/.local/share/Euro Truck Simulator 2/
+COPY ["/config_files", "~/data/.local/share/Euro Truck Simulator 2"]
 
 WORKDIR /app
 
