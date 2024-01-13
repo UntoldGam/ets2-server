@@ -24,5 +24,3 @@ HEALTHCHECK --interval=1m --timeout=1m --start-period=2m --retries=1 CMD /app/en
 RUN date > /build-time.txt
 
 ENTRYPOINT ["/bin/bash", "./entrypoint.sh"]
-
-RUN ./ets2server details
