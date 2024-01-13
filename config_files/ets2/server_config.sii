@@ -4,7 +4,7 @@ server_config : server {
  lobby_name: "BRB Logistics"
  description: ""
  welcome_message: "Welcome to the Server for BRB Logistics"
- password: "BRB"
+ password: BRB
  max_players: 8
  max_vehicles_total: 100
  max_ai_vehicles_player: 50
