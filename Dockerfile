@@ -16,7 +16,11 @@ RUN depshortname=$(curl --connect-timeout 10 -s https://raw.githubusercontent.co
   && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*; \
   fi
 
-COPY ["/config_files", "~/data/.local/share/Euro Truck Simulator 2"]
+WORKDIR ../data
+
+COPY ["/config_files", "/.local/share/Euro Truck Simulator 2"]
+
+WORKDIR ../app
 
 HEALTHCHECK --interval=1m --timeout=1m --start-period=2m --retries=1 CMD /app/entrypoint-healthcheck.sh || exit 1
 
