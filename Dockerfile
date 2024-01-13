@@ -3,6 +3,8 @@ LABEL maintainer="LinuxGSM <me@danielgibbs.co.uk>"
 ARG SHORTNAME=ets2
 ENV GAMESERVER=ets2server
 
+COPY /config_files ~/data/.local/share/Euro Truck Simulator 2/
+
 WORKDIR /app
 
 ## Auto install game server requirements
@@ -18,6 +20,6 @@ RUN depshortname=$(curl --connect-timeout 10 -s https://raw.githubusercontent.co
 
 HEALTHCHECK --interval=1m --timeout=1m --start-period=2m --retries=1 CMD /app/entrypoint-healthcheck.sh || exit 1
 
-RUN date > /build-time.txt
+#RUN date > /build-time.txt
 
 ENTRYPOINT ["/bin/bash", "./entrypoint.sh"]
