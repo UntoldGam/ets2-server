@@ -2,7 +2,7 @@ SiiNunit
 {
 server_config : server {
  lobby_name: "BRB Logistics"
- description: ""
+ description: "A dedicated server for the Trucking Company BRB Logistics"
  welcome_message: "Welcome to the Server for BRB Logistics"
  password: BRB
  max_players: 8
@@ -19,7 +19,7 @@ server_config : server {
  hide_in_company: false
  hide_colliding: true
  force_speed_limiter: false
- mods_optioning: false
+ mods_optioning: true
  timezones: 0
  service_no_collision: true
  in_menu_ghosting: false
