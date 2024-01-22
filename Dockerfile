@@ -24,7 +24,4 @@ ENV LANG 'en_US.UTF-8'
 ENV LANGUAGE 'en_US:en'
 
 ENTRYPOINT ["steamcmd"]
-RUN +force_install_dir ./ets2
-RUN +login anonymous
-RUN +app_update 1948160 validate
-RUN +quit
+CMD ["+help","+force_install_dir","./ets2","+login","anonymous","+app_update","1948160","validate","+quit"]
