@@ -1,31 +1,30 @@
-FROM gameservermanagers/linuxgsm:latest
-LABEL maintainer="LinuxGSM <me@danielgibbs.co.uk>"
-ARG SHORTNAME=ets2
-ENV GAMESERVER=ets2server
+FROM ubuntu:22.04
 
-WORKDIR /app
+ARG DEBIAN_FRONTEND=noninteractive
 
-## Auto install game server requirements
-RUN depshortname=$(curl --connect-timeout 10 -s https://raw.githubusercontent.com/GameServerManagers/LinuxGSM/master/lgsm/data/ubuntu-22.04.csv |awk -v shortname="ets2" -F, '$1==shortname {$1=""; print $0}') \
-  && if [ -n "${depshortname}" ]; then \
-  echo "**** Install ${depshortname} ****" \
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+
+# Install SteamCMD
+RUN echo "**** Install SteamCMD ****" \
+  && echo steam steam/question select "I AGREE" | debconf-set-selections \
+  && echo steam steam/license note '' | debconf-set-selections \
+  && dpkg --add-architecture i386 \
   && apt-get update \
-  && apt-get install -y ${depshortname} \
+  && apt-get install -y --no-install-recommends ca-certificates locales lib32gcc-s1 libsdl2-2.0-0:i386 steamcmd \
+  && ln -s /usr/games/steamcmd /usr/bin/steamcmd \
   && apt-get -y autoremove \
-  && apt-get clean \
-  && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*; \
-  fi
+  && apt-get -y clean \
+  && rm -rf /var/lib/apt/lists/* \
+  && rm -rf /tmp/* \
+  && rm -rf /var/tmp/*
 
-COPY ["/config_files/ets2", "/data/.local/share/Euro Truck Simulator 2"]
+# Add unicode support
+RUN locale-gen en_US.UTF-8
+ENV LANG 'en_US.UTF-8'
+ENV LANGUAGE 'en_US:en'
 
-
-HEALTHCHECK --interval=1m --timeout=1m --start-period=2m --retries=1 CMD /app/entrypoint-healthcheck.sh || exit 1
-
-RUN date > /build-time.txt
-
-EXPOSE 27015/tcp
-EXPOSE 27015/tcp
-EXPOSE 27016/udp
-EXPOSE 27016/udp
-
-ENTRYPOINT ["/bin/bash", "./entrypoint.sh"] 
+ENTRYPOINT ["steamcmd"]
+RUN +force_install_dir ./ets2
+RUN +login anonymous
+RUN +app_update 1948160 validate
+RUN +quit
