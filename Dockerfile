@@ -33,4 +33,4 @@ RUN echo "deb [signed-by=/etc/apt/trusted.gpg.d/playit.gpg] https://playit-cloud
 RUN apt update
 RUN apt install playit -y
 
-ENTRYPOINT ["/bin/bash", "./entrypoint.sh"] 
+#ENTRYPOINT ["/bin/bash", "./entrypoint.sh"] 
