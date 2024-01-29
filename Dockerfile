@@ -32,5 +32,6 @@ RUN curl -SsL https://playit-cloud.github.io/ppa/key.gpg | gpg --dearmor | tee /
 RUN echo "deb [signed-by=/etc/apt/trusted.gpg.d/playit.gpg] https://playit-cloud.github.io/ppa/data ./" | tee /etc/apt/sources.list.d/playit-cloud.list
 RUN apt update
 RUN apt install playit -y
+RUN playit setup
 
-#ENTRYPOINT ["/bin/bash", "./entrypoint.sh"] 
+ENTRYPOINT ["/bin/bash", "./entrypoint.sh"] 
