@@ -7,14 +7,14 @@ USER server
 WORKDIR /app
 
 ## Auto install game server requirements
-RUN depshortname=$(curl --connect-timeout 10 -s https://raw.githubusercontent.com/GameServerManagers/LinuxGSM/master/lgsm/data/ubuntu-22.04.csv |awk -v shortname="ets2" -F, '$1==shortname {$1=""; print $0}') \
+RUN depshortname=$(curl --connect-timeout 10 -s https://raw.githubusercontent.com/GameServerManagers/LinuxGSM/master/lgsm/data/ubuntu-22.04.csv | awk -v shortname="ets2" -F, '$1==shortname {$1=""; print $0}') \
   && if [ -n "${depshortname}" ]; then \
   echo "**** Install ${depshortname} ****" \
-  && apt-get update \
-  && apt-get install -y ${depshortname} \
-  && apt-get -y autoremove \
-  && apt-get clean \
-  && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*; \
+  && sudo apt-get update \
+  && sudo apt-get install -y ${depshortname} \
+  && sudo apt-get -y autoremove \
+  && sudo apt-get clean \
+  && sudo rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*; \
   fi
 
 COPY ["/config_files/ets2", "/data/.local/share/Euro Truck Simulator 2"]
