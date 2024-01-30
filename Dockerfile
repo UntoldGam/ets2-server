@@ -3,6 +3,7 @@ LABEL maintainer="LinuxGSM <me@danielgibbs.co.uk>"
 ARG SHORTNAME=ets2
 ENV GAMESERVER=ets2server
 
+USER server
 WORKDIR /app
 
 ## Auto install game server requirements
