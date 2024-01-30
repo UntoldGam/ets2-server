@@ -6,8 +6,8 @@ services:
       dockerfile: Dockerfile
     container_name: ets2server
     restart: unless-stopped
-#    ports:
-#      - "27015:16206/tcp"
-#      - "27016:16039/tcp"
-#     - "27015:17351/udp"
-#      - "27016:1490/udp"
+    ports:
+      - "27015:16511/tcp"
+      - "27016:16206/tcp"
+      - "27015:16511/udp"
+      - "27016:16206/udp"
