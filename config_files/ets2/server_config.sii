@@ -13,7 +13,7 @@ server_config : server {
  query_virtual_port: 101
  connection_dedicated_port: 27015
  query_dedicated_port: 27016
- server_logon_token: 75D962322F7D09B8931CABFE7AA55151
+ server_logon_token: F488473A66C3F340689BCC151FE6803C
  player_damage: true
  traffic: true
  hide_in_company: false
