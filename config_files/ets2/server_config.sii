@@ -1,7 +1,7 @@
 SiiNunit
 {
 server_config : server {
- lobby_name: "BRB Logistics - Test"
+ lobby_name: "BRB Logistics v1"
  description: ""
  welcome_message: "Welcome to the Server for BRB Logistics"
  password: "BRB"
