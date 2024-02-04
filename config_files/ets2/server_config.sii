@@ -22,7 +22,7 @@ server_config : server {
  mods_optioning: false
  timezones: 0
  service_no_collision: true
- in_menu_ghosting: false
+ in_menu_ghosting: true
  name_tags: true
  friends_only: false
  show_server: true
