@@ -2,11 +2,11 @@ FROM gameservermanagers/linuxgsm:latest
 LABEL maintainer="LinuxGSM <me@danielgibbs.co.uk>"
 ARG SHORTNAME=ets2
 ENV GAMESERVER=ets2server
-USER ets2server
+
 WORKDIR /app
 
 ## Auto install game server requirements
-RUN depshortname=$(curl --connect-timeout 10 -s https://raw.githubusercontent.com/GameServerManagers/LinuxGSM/master/lgsm/data/ubuntu-22.04.csv | awk -v shortname="ets2" -F, '$1==shortname {$1=""; print $0}') \
+RUN depshortname=$(curl --connect-timeout 10 -s https://raw.githubusercontent.com/GameServerManagers/LinuxGSM/master/lgsm/data/ubuntu-20.04.csv | awk -v shortname="ets2" -F, '$1==shortname {$1=""; print $0}') \
   && if [ -n "${depshortname}" ]; then \
   echo "**** Install ${depshortname} ****" \
   && apt-get update \
